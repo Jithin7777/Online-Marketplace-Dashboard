@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Wireless Mouse",
+    "price": 799,
+    "stock": 120,
+    "category": "Electronics",
+    "description": "Ergonomic wireless mouse with USB receiver",
+    "images": ["/images/mouse.jpg"],
+    "vendor": "Logitech",
+    "status": "active",
+    "createdAt": "2025-08-20T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Sports Shoes",
+    "price": 2499,
+    "stock": 50,
+    "category": "Footwear",
+    "description": "Lightweight running shoes with breathable mesh",
+    "images": ["/images/shoes.jpg"],
+    "vendor": "Nike",
+    "status": "out-of-stock",
+    "createdAt": "2025-08-19T12:00:00Z"
+  }
+]
