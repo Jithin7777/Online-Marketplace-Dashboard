@@ -65,7 +65,7 @@ export async function DELETE(
       message: "Deleted successfully",
       deletedId: deletedProduct.id,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error(error);
     return NextResponse.json(
       { error: "Internal server error" },
