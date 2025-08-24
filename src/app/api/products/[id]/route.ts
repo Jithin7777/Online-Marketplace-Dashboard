@@ -1,33 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import productsData from "../../../../data/products.json";
 import { Product } from "../../../../types/product";
+import productsData from "../../../../data/products.json";
 import fs from "fs";
 import path from "path";
 
 const filePath = path.join(process.cwd(), "src/data/products.json");
-
-function saveProductsToFile() {
-  fs.writeFileSync(filePath, JSON.stringify(products, null, 2), "utf-8");
-}
 
 const products: Product[] = productsData.map((p) => ({
   ...p,
   status: p.status === "active" || p.status === "out-of-stock" ? p.status : "active",
 }));
 
-export async function GET(req: NextRequest, context: { params: { id: string } }) {
+function saveProductsToFile() {
+  fs.writeFileSync(filePath, JSON.stringify(products, null, 2), "utf-8");
+}
+
+export async function GET(req: NextRequest, context: any) {
   const id = context.params.id;
-  const product = products.find((p) => p.id === id);
-
+  const product = products.find(p => p.id === id);
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
-
   return NextResponse.json(product);
 }
 
-export async function PUT(req: NextRequest, context: { params: { id: string } }) {
+export async function PUT(req: NextRequest, context: any) {
   const id = context.params.id;
-  const index = products.findIndex((p) => p.id === id);
-
+  const index = products.findIndex(p => p.id === id);
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const body = await req.json();
@@ -37,22 +34,16 @@ export async function PUT(req: NextRequest, context: { params: { id: string } })
   products[index] = { ...products[index], ...body, status: validStatus };
 
   saveProductsToFile();
-
   return NextResponse.json(products[index]);
 }
 
-export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: any) {
   const id = context.params.id;
-  const index = products.findIndex((p) => p.id === id);
-
+  const index = products.findIndex(p => p.id === id);
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const deletedProduct = products.splice(index, 1)[0];
-
   saveProductsToFile();
 
-  return NextResponse.json({
-    message: "Deleted successfully",
-    deletedId: deletedProduct.id,
-  });
+  return NextResponse.json({ message: "Deleted successfully", deletedId: deletedProduct.id });
 }
