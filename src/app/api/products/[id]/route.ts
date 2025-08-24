@@ -15,49 +15,37 @@ const products: Product[] = productsData.map((p) => ({
     p.status === "active" || p.status === "out-of-stock" ? p.status : "active",
 }));
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest, context: { params: { id: string } }) {
+  const { params } = context;
   const product = products.find((p) => p.id === params.id);
-  if (!product)
-    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+  if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
   return NextResponse.json(product);
 }
 
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: NextRequest, context: { params: { id: string } }) {
+  const { params } = context;
   const index = products.findIndex((p) => p.id === params.id);
-  if (index === -1)
-    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+  if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const body = await req.json();
-
   const validStatus: "active" | "out-of-stock" =
-    body.status === "active" || body.status === "out-of-stock"
-      ? body.status
-      : products[index].status;
+    body.status === "active" || body.status === "out-of-stock" ? body.status : products[index].status;
 
   products[index] = { ...products[index], ...body, status: validStatus };
 
+  saveProductsToFile(); 
   return NextResponse.json(products[index]);
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const index = products.findIndex((p) => p.id.toString() === params.id);
+export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+  const { params } = context;
+  const index = products.findIndex((p) => p.id === params.id);
 
-  if (index === -1) {
-    return NextResponse.json({ error: "Product not found" }, { status: 404 });
-  }
+  if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const deletedProduct = products.splice(index, 1)[0];
 
-  saveProductsToFile(); 
+  saveProductsToFile();
 
   return NextResponse.json({
     message: "Deleted successfully",
