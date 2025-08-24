@@ -364,20 +364,6 @@
     ]
   },
   {
-    "id": "29",
-    "name": "Beats Studio3",
-    "price": 300,
-    "stock": 18,
-    "category": "Electronics",
-    "status": "active",
-    "vendor": "Beats",
-    "description": "Wireless headphones",
-    "createdAt": "2023-03-10T09:00:00Z",
-    "images": [
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
     "id": "30",
     "name": "Harry Potter and the Sorcerer's Stone",
     "price": 12,

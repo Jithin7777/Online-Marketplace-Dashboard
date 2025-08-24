@@ -47,29 +47,20 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  try {
-    const { params } = context;
-    const index = products.findIndex((p) => p.id.toString() === params.id);
+  const index = products.findIndex((p) => p.id.toString() === params.id);
 
-    if (index === -1) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    }
-
-    const deletedProduct = products.splice(index, 1)[0];
-
-    saveProductsToFile();
-
-    return NextResponse.json({
-      message: "Deleted successfully",
-      deletedId: deletedProduct.id,
-    });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+  if (index === -1) {
+    return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
+
+  const deletedProduct = products.splice(index, 1)[0];
+
+  saveProductsToFile(); 
+
+  return NextResponse.json({
+    message: "Deleted successfully",
+    deletedId: deletedProduct.id,
+  });
 }
