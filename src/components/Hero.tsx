@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"; // <-- import Next.js Image
 
 const Hero = () => {
   return (
@@ -15,10 +16,12 @@ const Hero = () => {
         </div>
 
         <div className="w-full md:w-1/2 mt-0 md:mt-0 flex justify-center md:order-2">
-          <img
+          <Image
             src="/images/hero-image.png"
             alt="Respirator"
-            className="w-full sm:w-2/3 md:w-full  md:max-w-none rounded-md"
+            width={600} 
+            height={400} 
+            className="w-full sm:w-2/3 md:w-full md:max-w-none rounded-md"
           />
         </div>
       </div>
