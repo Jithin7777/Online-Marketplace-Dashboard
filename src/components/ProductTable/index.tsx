@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState, useEffect } from "react";
 import { Product } from "../../types/product";
 import { SidebarFilters } from "./SidebarFilters";
@@ -9,7 +9,6 @@ import toast, { Toaster } from "react-hot-toast"; // <-- react-hot-toast
 
 import {
   AlertDialog,
-  AlertDialogTrigger,
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -30,7 +29,9 @@ export const ProductTable: React.FC = () => {
   const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [sortBy, setSortBy] = useState<"price" | "stock" | "createdAt">("createdAt");
+  const [sortBy, setSortBy] = useState<"price" | "stock" | "createdAt">(
+    "createdAt"
+  );
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -106,48 +107,61 @@ export const ProductTable: React.FC = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [page, selectedCategories, selectedStatuses, debouncedSearch, sortBy, sortOrder]);
+  }, [
+    page,
+    selectedCategories,
+    selectedStatuses,
+    debouncedSearch,
+    sortBy,
+    sortOrder,
+  ]);
 
   const handleDeleteClick = (id: string) => {
     setDeleteId(id);
     setIsAlertOpen(true);
   };
 
-const handleConfirmDelete = async () => {
-  if (!deleteId) return;
+  const handleConfirmDelete = async () => {
+    if (!deleteId) return;
 
-  if (!deleteId.startsWith("temp-")) {
-    try {
-      const res = await fetch(`/api/products/${deleteId}`, { method: "DELETE" });
+    if (!deleteId.startsWith("temp-")) {
+      try {
+        const res = await fetch(`/api/products/${deleteId}`, {
+          method: "DELETE",
+        });
 
-      if (!res.ok) {
-        const err = await res.json();
-        toast.error(err.error || "Failed to delete product");
-        return;
+        if (!res.ok) {
+          const err = await res.json();
+          toast.error(err.error || "Failed to delete product");
+          return;
+        }
+
+        const data = await res.json();
+        console.log("Deleted on server:", data);
+
+        // Remove from local state only if backend succeeded
+        setProducts((prev) => prev.filter((p) => p.id !== deleteId));
+        setTotal((prev) => prev - 1);
+
+        toast.success("Product deleted successfully!");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error(err.message);
+          toast.error(err.message);
+        } else {
+          console.error(err);
+          toast.error("Something went wrong");
+        }
       }
-
-      const data = await res.json();
-      console.log("Deleted on server:", data);
-
-      // Remove from local state only if backend succeeded
-      setProducts(prev => prev.filter(p => p.id !== deleteId));
-      setTotal(prev => prev - 1);
-
+    } else {
+      setProducts((prev) => prev.filter((p) => p.id !== deleteId));
+      setTotal((prev) => prev - 1);
       toast.success("Product deleted successfully!");
-    } catch (err: any) {
-      console.error(err.message);
-      toast.error("Something went wrong");
     }
-  } else {
-    // For temp products → just remove locally
-    setProducts(prev => prev.filter(p => p.id !== deleteId));
-    setTotal(prev => prev - 1);
-    toast.success("Product deleted successfully!");
-  }
 
-  setDeleteId(null);
-  setIsAlertOpen(false);
-};
+    setDeleteId(null);
+    setIsAlertOpen(false);
+  };
   return (
     <div className="flex flex-col lg:flex-row gap-6 p-4">
       <SidebarFilters
@@ -187,6 +201,11 @@ const handleConfirmDelete = async () => {
             <option value="desc">Descending</option>
           </select>
         </div>
+        {error && (
+          <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">
+            {error}
+          </div>
+        )}
 
         <Table
           products={products}
@@ -199,20 +218,27 @@ const handleConfirmDelete = async () => {
           onDelete={handleDeleteClick}
         />
 
-        <TablePagination page={page} total={total} limit={limit} setPage={setPage} />
+        <TablePagination
+          page={page}
+          total={total}
+          limit={limit}
+          setPage={setPage}
+        />
       </div>
 
-      {/* ShadCN AlertDialog */}
       <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Confirm Delete</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete this product? This action cannot be undone.
+              Are you sure you want to delete this product? This action cannot
+              be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex justify-end gap-2 mt-4">
-            <AlertDialogCancel onClick={() => setIsAlertOpen(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setIsAlertOpen(false)}>
+              Cancel
+            </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleConfirmDelete}
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
@@ -223,7 +249,6 @@ const handleConfirmDelete = async () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* React Hot Toast container */}
       <Toaster position="top-center" />
     </div>
   );
