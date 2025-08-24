@@ -280,20 +280,6 @@
     ]
   },
   {
-    "id": "25",
-    "name": "Apple Watch Series 9",
-    "price": 400,
-    "stock": 20,
-    "category": "Electronics",
-    "status": "active",
-    "vendor": "Apple Store",
-    "description": "Latest smartwatch",
-    "createdAt": "2023-07-05T09:00:00Z",
-    "images": [
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
     "id": "26",
     "name": "The Subtle Art of Not Giving a F*ck",
     "price": 18,
