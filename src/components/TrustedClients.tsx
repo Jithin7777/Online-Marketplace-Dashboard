@@ -51,13 +51,13 @@ export default function TrustedClients() {
     );
   };
 
-  const handleTouchStart = (e:any) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  setTouchStart(e.touches[0].clientX);
+};
 
-  const handleTouchMove = (e:any) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  setTouchEnd(e.touches[0].clientX);
+};
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 50) {

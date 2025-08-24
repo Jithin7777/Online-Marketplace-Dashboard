@@ -5,7 +5,7 @@ import { SidebarFilters } from "./SidebarFilters";
 import { Table } from "./ProductList";
 import { TablePagination } from "./TablePagination";
 import { useRouter } from "next/navigation";
-import toast, { Toaster } from "react-hot-toast"; // <-- react-hot-toast
+import toast, { Toaster } from "react-hot-toast";
 
 import {
   AlertDialog,
@@ -94,8 +94,12 @@ export const ProductTable: React.FC = () => {
       const data = await res.json();
       setProducts(data.data);
       setTotal(data.total);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Something went wrong");
+      }
     } finally {
       setLoading(false);
     }
