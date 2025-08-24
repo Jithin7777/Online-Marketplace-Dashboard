@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
+# Clone the repository
+
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+
+git clone git@github.com:Jithin7777/Online-Marketplace-Dashboard.git
+
+# Go into the project directory
+cd Online-Marketplace-Dashboard
+
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Mock Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Products are stored in src/data/products.json
+Example structure:
 
-## Learn More
+```bash
+{
+  "id": "1756043493617",
+  "name": "Sample Product",
+  "price": 99.99,
+  "stock": 25,
+  "category": "Electronics",
+  "vendor": "Vendor A",
+  "status": "active",
+  "createdAt": "2025-08-24T12:00:00.000Z"
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+1.Get All Products
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+method:GET
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+http://localhost:3000/api/products
+```
 
-## Deploy on Vercel
+1.Add New Product
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+method:POST
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+ /api/products
+```
+
+Example Request:
+
+```bash
+http://localhost:3000/api/products
+```
+
+Request Body:
+
+```json
+{
+  "name": "Test Product",
+  "price": 100,
+  "stock": 5,
+  "category": "Test",
+  "vendor": "Me",
+  "status": "active"
+}
+```
+
+2. Delete Product By ID
+   method: DELETE
+
+```bash
+DELETE /api/products/[id]
+```
+
+Example Request:
+
+```bash
+DELETE http://localhost:3000/api/products/1
+```
+
+## AI Tools Used
+
+ChatGPT: Assisted with generating API routes and React components
+Figma: Design reference for layout and styling
+Tailwind CSS IntelliSense: Faster styling
+
+
+## API Overview
+
+Products are stored in src/data/products.json. No database (MongoDB) is used, all data is hardcoded and imported.
+
+⚠️ Note: POST and DELETE endpoints modify the local JSON file. These changes only work locally. On Vercel, the serverless functions cannot write to files, so POST/DELETE will not persist data. GET works fine.
