@@ -37,7 +37,6 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
   return (
     <Pagination className="mt-4 flex justify-center">
       <PaginationContent>
-        {/* Previous Button */}
         <PaginationItem>
           <PaginationPrevious
             onClick={() => setPage(page - 1)}
@@ -45,7 +44,6 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           />
         </PaginationItem>
 
-        {/* Page Numbers */}
         {pages.map((p, idx) =>
           p === "..." ? (
             <PaginationItem key={idx}>
@@ -60,7 +58,6 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           )
         )}
 
-        {/* Next Button */}
         <PaginationItem>
           <PaginationNext
             onClick={() => setPage(page + 1)}

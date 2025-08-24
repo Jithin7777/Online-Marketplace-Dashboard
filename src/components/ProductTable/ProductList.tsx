@@ -80,7 +80,7 @@ export const Table: React.FC<TableProps> = ({
                 {Array.from({ length: 7 }).map(
                   (
                     __,
-                    i // 7 instead of 6
+                    i 
                   ) => (
                     <TableCell
                       key={i}

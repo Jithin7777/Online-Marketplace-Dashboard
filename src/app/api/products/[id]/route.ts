@@ -17,9 +17,9 @@ function saveProductsToFile() {
 
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } // Accept Promise
+  context: { params: Promise<{ id: string }> } 
 ) {
-  const params = await context.params; // Await the params
+  const params = await context.params; 
   const { id } = params;
   const product = products.find((p) => p.id === id);
 
@@ -32,7 +32,7 @@ export async function PUT(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const params = await context.params; // Await the params
+  const params = await context.params; 
   const { id } = params;
   const index = products.findIndex((p) => p.id === id);
 
@@ -56,7 +56,7 @@ export async function DELETE(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const params = await context.params; // Await the params
+  const params = await context.params; 
   const { id } = params;
   const index = products.findIndex((p) => p.id === id);
 

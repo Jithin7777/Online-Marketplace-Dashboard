@@ -54,8 +54,6 @@ export async function GET(req: NextRequest) {
       : (bValue as number) - (aValue as number);
   });
 
-
-  
   const start = (page - 1) * limit;
   const end = start + limit;
   const paginated = filtered.slice(start, end);

@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaLinkedin } from "react
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2E3047] text-gray-300 font-open-sans">
+    <footer className="bg-[#2E3047] text-gray-300 font-open-sans ">
      
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
        
@@ -102,7 +102,7 @@ export default function Footer() {
       </div>
 
   
-      <div className="text-center py-4 text-sm border-t border-gray-600">
+      <div className="text-center py-4 text-sm border-t border-gray-600 ">
         Copyright © 2025{" "}
         <span className="text-red-500 font-semibold">iProcure.ai</span>. All Rights Reserved
       </div>

@@ -143,7 +143,6 @@ export const ProductTable: React.FC = () => {
         const data = await res.json();
         console.log("Deleted on server:", data);
 
-        // Remove from local state only if backend succeeded
         setProducts((prev) => prev.filter((p) => p.id !== deleteId));
         setTotal((prev) => prev - 1);
 
@@ -183,23 +182,23 @@ export const ProductTable: React.FC = () => {
       <div className="flex-1 bg-white rounded-xl p-4 shadow-md">
         {/* Sorting */}
         <div className="flex items-center gap-3 mb-4 flex-wrap">
-          <label className="text-gray-700">Sort By:</label>
+          <label className="text-gray-700 text-sm md:text-lg">Sort By:</label>
           <select
             value={sortBy}
             onChange={(e) =>
               setSortBy(e.target.value as "price" | "stock" | "createdAt")
             }
-            className="border px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border px-1 md:px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="price">Price</option>
             <option value="stock">Stock</option>
-            <option value="createdAt">Created At</option>
+            <option value="createdAt" className="">Created At</option>
           </select>
 
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-            className="border px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border px-1 md:px-3 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
