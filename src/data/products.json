@@ -1,26 +1,394 @@
 [
   {
     "id": "1",
-    "name": "Wireless Mouse",
-    "price": 799,
-    "stock": 120,
+    "name": "Apple iPhone 15",
+    "price": 999,
+    "stock": 20,
     "category": "Electronics",
-    "description": "Ergonomic wireless mouse with USB receiver",
-    "images": ["/images/mouse.jpg"],
-    "vendor": "Logitech",
     "status": "active",
-    "createdAt": "2025-08-20T10:00:00Z"
+    "vendor": "Apple Store",
+    "description": "Latest iPhone model",
+    "createdAt": "2025-08-22T12:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
   },
   {
-    "id": "2",
-    "name": "Sports Shoes",
-    "price": 2499,
-    "stock": 50,
-    "category": "Footwear",
-    "description": "Lightweight running shoes with breathable mesh",
-    "images": ["/images/shoes.jpg"],
-    "vendor": "Nike",
+    "id": "3",
+    "name": "Sony WH-1000XM5",
+    "price": 350,
+    "stock": 25,
+    "category": "Electronics",
     "status": "out-of-stock",
-    "createdAt": "2025-08-19T12:00:00Z"
+    "vendor": "Sony",
+    "description": "Noise-cancelling headphones",
+    "createdAt": "2025-06-20T09:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Nike Air Max",
+    "price": 150,
+    "stock": 50,
+    "category": "Fashion",
+    "status": "active",
+    "vendor": "Nike",
+    "description": "Popular sneakers",
+    "createdAt": "2025-04-21T10:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Adidas Ultraboost",
+    "price": 180,
+    "stock": 30,
+    "category": "Fashion",
+    "status": "active",
+    "vendor": "Adidas",
+    "description": "Comfortable running shoes",
+    "createdAt": "2025-03-10T14:15:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Levi's 501 Jeans",
+    "price": 60,
+    "stock": 40,
+    "category": "Fashion",
+    "status": "out-of-stock",
+    "vendor": "Levi's",
+    "description": "Classic denim jeans",
+    "createdAt": "2025-02-18T08:45:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "MacBook Pro 16",
+    "price": 2500,
+    "stock": 10,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Apple Store",
+    "description": "Powerful laptop for professionals",
+    "createdAt": "2025-01-25T11:20:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "HP Spectre x360",
+    "price": 1800,
+    "stock": 12,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "HP",
+    "description": "Convertible laptop",
+    "createdAt": "2024-12-05T09:30:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Atomic Habits",
+    "price": 20,
+    "stock": 80,
+    "category": "Books",
+    "status": "out-of-stock",
+    "vendor": "Penguin Books",
+    "description": "Self-improvement guide",
+    "createdAt": "2024-10-15T10:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "11",
+    "name": "Kindle Paperwhite",
+    "price": 130,
+    "stock": 35,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Amazon",
+    "description": "E-reader with high-resolution display",
+    "createdAt": "2024-09-01T09:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Samsung QLED TV",
+    "price": 1200,
+    "stock": 8,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Samsung Store",
+    "description": "Smart 4K television",
+    "createdAt": "2024-08-22T16:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Google Pixel 8",
+    "price": 799,
+    "stock": 18,
+    "category": "Electronics",
+    "status": "out-of-stock",
+    "vendor": "Google Store",
+    "description": "Latest Pixel phone",
+    "createdAt": "2024-07-18T12:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Canon EOS R6",
+    "price": 2500,
+    "stock": 5,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Canon",
+    "description": "Professional mirrorless camera",
+    "createdAt": "2024-06-10T08:30:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Bose SoundLink",
+    "price": 200,
+    "stock": 22,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Bose",
+    "description": "Portable Bluetooth speaker",
+    "createdAt": "2024-05-05T14:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Harry Potter Box Set",
+    "price": 100,
+    "stock": 60,
+    "category": "Books",
+    "status": "active",
+    "vendor": "Scholastic",
+    "description": "Complete series collection",
+    "createdAt": "2024-04-01T09:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "17",
+    "name": "FIFA 25 Game",
+    "price": 60,
+    "stock": 70,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "EA Sports",
+    "description": "Popular football game",
+    "createdAt": "2024-03-20T12:30:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "18",
+    "name": "The Lean Startup",
+    "price": 25,
+    "stock": 40,
+    "category": "Books",
+    "status": "out-of-stock",
+    "vendor": "Penguin Books",
+    "description": "Business and entrepreneurship",
+    "createdAt": "2024-02-10T11:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Puma Running Shoes",
+    "price": 120,
+    "stock": 28,
+    "category": "Fashion",
+    "status": "active",
+    "vendor": "Puma",
+    "description": "Lightweight running shoes",
+    "createdAt": "2024-01-05T13:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Asus ROG Laptop",
+    "price": 2200,
+    "stock": 7,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Asus",
+    "description": "Gaming laptop",
+    "createdAt": "2023-12-12T09:30:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Google Nest Hub",
+    "price": 100,
+    "stock": 50,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Google",
+    "description": "Smart home display",
+    "createdAt": "2023-11-15T10:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Fitbit Charge 6",
+    "price": 180,
+    "stock": 35,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Fitbit",
+    "description": "Fitness tracker",
+    "createdAt": "2023-10-22T08:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "23",
+    "name": "Ray-Ban Aviator",
+    "price": 150,
+    "stock": 25,
+    "category": "Fashion",
+    "status": "out-of-stock",
+    "vendor": "Ray-Ban",
+    "description": "Classic sunglasses",
+    "createdAt": "2023-09-15T12:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Kindle Oasis",
+    "price": 250,
+    "stock": 15,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Amazon",
+    "description": "Premium e-reader",
+    "createdAt": "2023-08-10T14:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "25",
+    "name": "Apple Watch Series 9",
+    "price": 400,
+    "stock": 20,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Apple Store",
+    "description": "Latest smartwatch",
+    "createdAt": "2023-07-05T09:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "26",
+    "name": "The Subtle Art of Not Giving a F*ck",
+    "price": 18,
+    "stock": 45,
+    "category": "Books",
+    "status": "active",
+    "vendor": "HarperCollins",
+    "description": "Self-help book",
+    "createdAt": "2023-06-12T11:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "27",
+    "name": "Canon PowerShot G7",
+    "price": 700,
+    "stock": 10,
+    "category": "Electronics",
+    "status": "out-of-stock",
+    "vendor": "Canon",
+    "description": "Compact digital camera",
+    "createdAt": "2023-05-18T12:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "28",
+    "name": "Under Armour Hoodie",
+    "price": 60,
+    "stock": 30,
+    "category": "Fashion",
+    "status": "active",
+    "vendor": "Under Armour",
+    "description": "Warm and comfortable",
+    "createdAt": "2023-04-22T10:30:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "29",
+    "name": "Beats Studio3",
+    "price": 300,
+    "stock": 18,
+    "category": "Electronics",
+    "status": "active",
+    "vendor": "Beats",
+    "description": "Wireless headphones",
+    "createdAt": "2023-03-10T09:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
+  },
+  {
+    "id": "30",
+    "name": "Harry Potter and the Sorcerer's Stone",
+    "price": 12,
+    "stock": 100,
+    "category": "Books",
+    "status": "active",
+    "vendor": "Scholastic",
+    "description": "First book in the series",
+    "createdAt": "2023-02-05T08:00:00Z",
+    "images": [
+      "https://via.placeholder.com/150"
+    ]
   }
 ]

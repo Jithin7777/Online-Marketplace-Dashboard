@@ -1,14 +1,22 @@
-import Navbar from '@/components/Navbar'
-import SecondaryNav from '@/components/SecondaryNav'
-import React from 'react'
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import { ProductTable } from "@/components/ProductTable/index";
+import SecondaryNav from "@/components/SecondaryNav";
+import TrustedClients from "@/components/TrustedClients";
+import React from "react";
 
 const page = () => {
   return (
     <div>
-        <Navbar/>
-        <SecondaryNav/>
+      <Navbar />
+      <SecondaryNav />
+      <Hero />
+      <ProductTable />
+      <TrustedClients />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
