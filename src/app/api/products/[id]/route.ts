@@ -3,6 +3,7 @@ import productsData from "../../../../data/products.json";
 import { Product } from "../../../../types/product";
 import fs from "fs";
 import path from "path";
+
 const filePath = path.join(process.cwd(), "src/data/products.json");
 
 function saveProductsToFile() {
@@ -11,20 +12,22 @@ function saveProductsToFile() {
 
 const products: Product[] = productsData.map((p) => ({
   ...p,
-  status:
-    p.status === "active" || p.status === "out-of-stock" ? p.status : "active",
+  status: p.status === "active" || p.status === "out-of-stock" ? p.status : "active",
 }));
 
 export async function GET(req: NextRequest, context: { params: { id: string } }) {
-  const { params } = context;
-  const product = products.find((p) => p.id === params.id);
+  const id = context.params.id;
+  const product = products.find((p) => p.id === id);
+
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
+
   return NextResponse.json(product);
 }
 
 export async function PUT(req: NextRequest, context: { params: { id: string } }) {
-  const { params } = context;
-  const index = products.findIndex((p) => p.id === params.id);
+  const id = context.params.id;
+  const index = products.findIndex((p) => p.id === id);
+
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const body = await req.json();
@@ -33,13 +36,14 @@ export async function PUT(req: NextRequest, context: { params: { id: string } })
 
   products[index] = { ...products[index], ...body, status: validStatus };
 
-  saveProductsToFile(); 
+  saveProductsToFile();
+
   return NextResponse.json(products[index]);
 }
 
 export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
-  const { params } = context;
-  const index = products.findIndex((p) => p.id === params.id);
+  const id = context.params.id;
+  const index = products.findIndex((p) => p.id === id);
 
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
