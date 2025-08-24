@@ -41,9 +41,14 @@ export default function AddProductPage() {
       toast.success("Product added successfully!");
 
       router.push("/products");
-    } catch (err: any) {
-      console.error(err.message);
-      toast.error("Failed to add product");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err.message);
+        toast.error(err.message);
+      } else {
+        console.error(err);
+        toast.error("Failed to add product");
+      }
     }
   };
   return (
