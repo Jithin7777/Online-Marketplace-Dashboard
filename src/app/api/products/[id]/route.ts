@@ -15,12 +15,12 @@ function saveProductsToFile() {
   fs.writeFileSync(filePath, JSON.stringify(products, null, 2), "utf-8");
 }
 
-// The important part: context.params should NOT be typed as a Promise
 export async function GET(
   req: NextRequest,
-  context: { params: { id: string } } // <-- this is correct
+  context: { params: Promise<{ id: string }> } // Accept Promise
 ) {
-  const { id } = context.params;
+  const params = await context.params; // Await the params
+  const { id } = params;
   const product = products.find((p) => p.id === id);
 
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
@@ -30,9 +30,10 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = context.params;
+  const params = await context.params; // Await the params
+  const { id } = params;
   const index = products.findIndex((p) => p.id === id);
 
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
@@ -53,9 +54,10 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = context.params;
+  const params = await context.params; // Await the params
+  const { id } = params;
   const index = products.findIndex((p) => p.id === id);
 
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });

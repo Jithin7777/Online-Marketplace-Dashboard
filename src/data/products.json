@@ -98,20 +98,6 @@
     ]
   },
   {
-    "id": "10",
-    "name": "Atomic Habits",
-    "price": 20,
-    "stock": 80,
-    "category": "Books",
-    "status": "out-of-stock",
-    "vendor": "Penguin Books",
-    "description": "Self-improvement guide",
-    "createdAt": "2024-10-15T10:00:00Z",
-    "images": [
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
     "id": "11",
     "name": "Kindle Paperwhite",
     "price": 130,
