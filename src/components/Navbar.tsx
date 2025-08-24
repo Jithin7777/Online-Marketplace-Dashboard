@@ -1,5 +1,6 @@
 // components/Navbar.tsx
 import { Search } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const SearchBar = ({ className }: { className?: string }) => (
@@ -18,10 +19,13 @@ const Navbar = () => {
     <header className="bg-white shadow-md px-4 md:px-16">
       <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 items-center py-3">
         <div className="flex items-center space-x-2">
-          <img
+          <Image
             src="/images/logo.png"
             alt="Logo"
-            className="h-6 md:h-8 w-auto"
+            width={120}
+            height={32}
+            className="w-auto h-6 md:h-8"
+            priority
           />
         </div>
 
