@@ -4,7 +4,7 @@ import { Product } from "../../../types/product";
 import fs from "fs";
 import path from "path";
 
-let products: Product[] = productsData.map((p) => ({
+const products: Product[] = productsData.map((p) => ({
   ...p,
   status:
     p.status === "active" || p.status === "out-of-stock" ? p.status : "active",
@@ -12,6 +12,7 @@ let products: Product[] = productsData.map((p) => ({
 
 const filePath = path.join(process.cwd(), "src/data/products.json");
 
+// Save products to JSON file
 function saveProductsToFile() {
   fs.writeFileSync(filePath, JSON.stringify(products, null, 2), "utf-8");
 }
@@ -19,9 +20,9 @@ function saveProductsToFile() {
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
-  const page = parseInt(searchParams.get("page") || "1");
-  const limit = parseInt(searchParams.get("limit") || "10");
-  const sortBy = searchParams.get("sortBy") || "createdAt";
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const limit = parseInt(searchParams.get("limit") || "10", 10);
+  const sortBy = (searchParams.get("sortBy") || "createdAt") as keyof Product;
   const sortOrder = searchParams.get("sortOrder") || "desc";
   const category = searchParams.get("category");
   const status = searchParams.get("status");
@@ -31,18 +32,30 @@ export async function GET(req: NextRequest) {
   if (category) filtered = filtered.filter((p) => p.category === category);
   if (status) filtered = filtered.filter((p) => p.status === status);
   if (search) {
+    const lowerSearch = search.toLowerCase();
     filtered = filtered.filter(
       (p) =>
-        p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.vendor.toLowerCase().includes(search.toLowerCase())
+        p.name.toLowerCase().includes(lowerSearch) ||
+        p.vendor.toLowerCase().includes(lowerSearch)
     );
   }
 
-  filtered.sort((a: any, b: any) => {
-    if (sortOrder === "asc") return a[sortBy] > b[sortBy] ? 1 : -1;
-    return a[sortBy] < b[sortBy] ? 1 : -1;
+  // Sort products
+  filtered.sort((a, b) => {
+    const aValue = a[sortBy];
+    const bValue = b[sortBy];
+
+    return typeof aValue === "string"
+      ? sortOrder === "asc"
+        ? aValue.localeCompare(bValue as string)
+        : (bValue as string).localeCompare(aValue)
+      : sortOrder === "asc"
+      ? (aValue as number) - (bValue as number)
+      : (bValue as number) - (aValue as number);
   });
 
+
+  
   const start = (page - 1) * limit;
   const end = start + limit;
   const paginated = filtered.slice(start, end);
