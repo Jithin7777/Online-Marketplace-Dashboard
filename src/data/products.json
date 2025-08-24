@@ -126,20 +126,6 @@
     ]
   },
   {
-    "id": "12",
-    "name": "Samsung QLED TV",
-    "price": 1200,
-    "stock": 8,
-    "category": "Electronics",
-    "status": "active",
-    "vendor": "Samsung Store",
-    "description": "Smart 4K television",
-    "createdAt": "2024-08-22T16:00:00Z",
-    "images": [
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
     "id": "13",
     "name": "Google Pixel 8",
     "price": 799,

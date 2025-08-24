@@ -15,19 +15,23 @@ function saveProductsToFile() {
   fs.writeFileSync(filePath, JSON.stringify(products, null, 2), "utf-8");
 }
 
-export async function GET(req: NextRequest, context: any) {
+// Define the context type
+type Params = { id: string };
+
+export async function GET(req: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const product = products.find(p => p.id === id);
+  const product = products.find((p) => p.id === id);
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
   return NextResponse.json(product);
 }
 
-export async function PUT(req: NextRequest, context: any) {
+export async function PUT(req: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const index = products.findIndex(p => p.id === id);
+  const index = products.findIndex((p) => p.id === id);
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
-  const body = await req.json();
+  const body = (await req.json()) as Partial<Product>; 
+
   const validStatus: "active" | "out-of-stock" =
     body.status === "active" || body.status === "out-of-stock" ? body.status : products[index].status;
 
@@ -37,9 +41,9 @@ export async function PUT(req: NextRequest, context: any) {
   return NextResponse.json(products[index]);
 }
 
-export async function DELETE(req: NextRequest, context: any) {
+export async function DELETE(req: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const index = products.findIndex(p => p.id === id);
+  const index = products.findIndex((p) => p.id === id);
   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
   const deletedProduct = products.splice(index, 1)[0];
