@@ -46,7 +46,7 @@ method:GET
 http://localhost:3000/api/products
 ```
 
-1.Add New Product
+2.Add New Product
 
 method:POST
 

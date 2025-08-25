@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import { ProductTable } from "@/components/ProductTable/index";
 import SecondaryNav from "@/components/SecondaryNav";
 import TrustedClients from "@/components/TrustedClients";
@@ -11,6 +12,7 @@ const page = () => {
     <div>
       <Navbar />
       <SecondaryNav />
+      <PageBreadcrumb/>
       <Hero />
       <ProductTable />
       <TrustedClients />

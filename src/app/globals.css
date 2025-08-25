@@ -78,6 +78,7 @@
   --sidebar-ring: oklch(0.708 0 0);
   --font-poppins: "Poppins", sans-serif;
   --font-open-sans: "Open Sans", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 }
 
 .dark {
@@ -129,4 +130,9 @@
 
 .font-open-sans {
   font-family: var(--font-open-sans);
+}
+
+.font-roboto {
+  font-family: var(--font-roboto);
+  font-weight: 300; 
 }
