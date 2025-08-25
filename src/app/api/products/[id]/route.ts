@@ -28,29 +28,29 @@ export async function GET(
   return NextResponse.json(product);
 }
 
-export async function PUT(
-  req: NextRequest,
-  context: { params: Promise<{ id: string }> }
-) {
-  const params = await context.params; 
-  const { id } = params;
-  const index = products.findIndex((p) => p.id === id);
+// export async function PUT(
+//   req: NextRequest,
+//   context: { params: Promise<{ id: string }> }
+// ) {
+//   const params = await context.params; 
+//   const { id } = params;
+//   const index = products.findIndex((p) => p.id === id);
 
-  if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
+//   if (index === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
-  const body = (await req.json()) as Partial<Product>;
+//   const body = (await req.json()) as Partial<Product>;
 
-  const validStatus: "active" | "out-of-stock" =
-    body.status === "active" || body.status === "out-of-stock"
-      ? body.status
-      : products[index].status;
+//   const validStatus: "active" | "out-of-stock" =
+//     body.status === "active" || body.status === "out-of-stock"
+//       ? body.status
+//       : products[index].status;
 
-  products[index] = { ...products[index], ...body, status: validStatus };
+//   products[index] = { ...products[index], ...body, status: validStatus };
 
-  saveProductsToFile();
+//   saveProductsToFile();
 
-  return NextResponse.json(products[index]);
-}
+//   return NextResponse.json(products[index]);
+// }
 
 export async function DELETE(
   req: NextRequest,
