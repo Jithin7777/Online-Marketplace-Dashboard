@@ -1,8 +1,21 @@
+# Online Marketplace Dashboard
+
+Explore and manage your products effortlessly with the **Online Marketplace Dashboard**.
+
+## Features
+
+- **Product Management**: Explore and manage your products effortlessly.
+- **Paginated Table**: View products in a paginated table with the latest items displayed first.
+- **Sorting Options**: Sort products by price, stock for easy navigation.
+- **Filtering**: Filter products by category or status to quickly find what you need.
+- **Add & Delete Products**: Add new products and delete existing ones locally.
+- **Interactive UI**: Enjoy a seamless experience with interactive UI enhancements.
+
 ## Getting Started
 
 First, run the development server:
 
-# Clone the repository
+## Clone the repository
 
 ```bash
 
@@ -38,17 +51,17 @@ Example structure:
 }
 ```
 
-1.Get All Products
+1. Get All Products
 
-method:GET
+Method:GET
 
 ```bash
 http://localhost:3000/api/products
 ```
 
-2.Add New Product
+2. Add New Product
 
-method:POST
+Method:POST
 
 ```bash
  /api/products
@@ -73,8 +86,8 @@ Request Body:
 }
 ```
 
-2. Delete Product By ID
-   method: DELETE
+3. Delete Product By ID
+   Method: DELETE
 
 ```bash
 DELETE /api/products/[id]
@@ -88,9 +101,9 @@ DELETE http://localhost:3000/api/products/1
 
 ## AI Tools Used
 
-ChatGPT: Assisted with generating API routes and React components
-Figma: Design reference for layout and styling
-Tailwind CSS IntelliSense: Faster styling
+- **ChatGPT**: Assisted with generating API routes and React components
+- **Figma**: Design reference for layout and styling
+- **Tailwind CSS IntelliSense**: Faster styling
 
 
 ## API Overview
